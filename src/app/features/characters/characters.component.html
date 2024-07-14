@@ -1,0 +1,41 @@
+<div class="card">
+  <div class="card-body">
+    <input
+      class="form-control form-control-sm"
+      [(ngModel)]="filter.name"
+      placeholder="Filter by name"
+    />
+
+    <select class="form-select form-select-sm" [(ngModel)]="filter.status">
+      <option *ngFor="let status of characterStatus" [value]="status.code">
+        {{ status.name }}
+      </option>
+    </select>
+
+    <input
+      class="form-control form-control-sm"
+      [(ngModel)]="filter.species"
+      placeholder="Filter by species"
+    />
+
+    <button class="btn btn-primary btn-sm" (click)="loadCharacters(true)">
+      apply
+    </button>
+
+    <button class="btn btn-primary btn-sm" (click)="clearFilters()">
+      Clear Filters
+    </button>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <app-character-list
+      (loadMore)="loadMore()"
+      [currentPage]="currentPage"
+      [characters]="characters"
+      (isSorting)="sortBy($event)"
+      [endOfList]="endOfList"
+    ></app-character-list>
+  </div>
+</div>

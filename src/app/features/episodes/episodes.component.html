@@ -1,4 +1,10 @@
-<div class="container" style="height: 800px;">
-  lorem
-</div>
 
+<div class="card">
+  <div class="card-body">
+    <app-episode-list
+      (loadMore)="loadMore()"
+      [currentPage]="currentPage"
+      [episodes]="episodes"
+    ></app-episode-list>
+  </div>
+</div>

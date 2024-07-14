@@ -1,13 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { RickAndMortyService } from '../../../core/services/rick-and-morty/rick-and-morty.service';
 import { SubSink } from 'subsink';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-character-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './character-detail.component.html',
   styleUrl: './character-detail.component.css'
 })

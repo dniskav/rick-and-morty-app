@@ -10,7 +10,7 @@ export const routes: Routes = [
   { path: 'characters', component: CharactersComponent },
   { path: 'character/:id', component: CharacterDetailComponent },
   { path: 'episodes', component: EpisodesComponent },
-  { path: 'episodes/:id', component: EpisodeDetailComponent },
+  { path: 'episode/:id', component: EpisodeDetailComponent },
   { path: 'websocket', component: WebsocketComponent },
 ];
 

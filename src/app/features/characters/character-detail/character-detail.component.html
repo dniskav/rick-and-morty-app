@@ -14,7 +14,7 @@
       <span>Espidodes: </span> 
         <ul class="list-group">
           <li *ngFor="let cap of characterData.episode" class="list-group-item">
-            <a [href]="cap">{{ extractId(cap) }}</a>
+            <a [routerLink]="['/episode', extractId(cap)]" href="#">{{ extractId(cap) }}</a>
           </li>
         </ul>
     </li>

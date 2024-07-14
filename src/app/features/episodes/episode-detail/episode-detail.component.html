@@ -1,1 +1,73 @@
-<p>episode-detail works!</p>
+<div class="card">
+  <div class="card-body">
+    <ul class="list-group" *ngIf="dataLoaded">
+
+      <li class="list-group-item">
+        <button (click)="print()" class="btn btn-success btn-sm">Print</button>
+      </li>
+      <li class="list-group-item">
+        <span>Name: </span> <span>{{ episodeData.name }}</span>
+      </li>
+      <li class="list-group-item">
+        <span>Air date: </span> <span>{{ episodeData.air_date }}</span>
+      </li>
+      <li class="list-group-item">
+        <span>Season: </span> <span>{{ episodeData.season }}</span>
+      </li>
+      <li class="list-group-item">
+        <span>Number: </span> <span>{{ episodeData.number }}</span>
+      </li>
+      <li class="list-group-item">
+        <span>Characters: </span>
+        <table class="table table-striped">
+          <thead class="sticky">
+            <tr>
+              <th>Image</th>
+
+              <th>Name</th>
+
+              <th>Status</th>
+
+              <th>Species</th>
+
+              <th>Episode</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr
+              *ngFor="let rowData of charactersList"
+              (click)="goto(rowData.id)"
+            >
+              <td>
+                <img
+                  class="avatar"
+                  [appImageLoader]="rowData.image"
+                  [defaultImage]="'assets/images/default.jpeg'"
+                  src="assets/images/default.jpeg"
+                  [alt]="rowData.name"
+                />
+              </td>
+
+              <td>
+                {{ rowData.name }}
+              </td>
+
+              <td>
+                {{ rowData.status }}
+              </td>
+
+              <td>
+                {{ rowData.species }}
+              </td>
+
+              <td>
+                {{ rowData.episode.length }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </div>
+</div>

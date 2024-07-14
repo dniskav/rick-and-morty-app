@@ -1,1 +1,46 @@
-<p>episode-list works!</p>
+<div
+  inifiniteScroll
+  [threshold]="10"
+  (closeToBottom)="closeToBottom()"
+  class="list-container"
+>
+  <table class="table table-striped">
+    <thead class="sticky">
+      <tr>
+        <th>Name</th>
+
+        <th>
+          Season
+        </th>
+
+        <th>
+          number
+        </th>
+
+        <th>
+          Air date
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let rowData of episodes" (click)="goto(rowData.id)">
+        <td>
+          {{ rowData.name }}
+        </td>
+
+        <td>
+          {{ rowData.season }}
+        </td>
+
+        <td>
+          {{ rowData.number }}
+        </td>
+
+        <td>
+          {{ rowData.air_date }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

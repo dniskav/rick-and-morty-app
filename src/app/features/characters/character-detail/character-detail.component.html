@@ -1,0 +1,22 @@
+<div class="card">
+  <ul class="list-group" *ngIf="dataLoaded">
+    <li class="list-group-item"><span>Name: </span> <span>{{ characterData.name }}</span></li>
+    <li class="list-group-item"><span>Gender: </span> <span>{{ characterData.gender }}</span></li>
+    <li class="list-group-item"><span>Origin: </span> <span>{{ characterData.origin.name }}</span></li>
+    <li class="list-group-item"><span>Images: </span> 
+      <div class="grid">
+        <div class="g-col-4">
+          <img *ngFor="let img of images" [src]="img" class="rounded shadow pad-3"/>
+        </div>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <span>Espidodes: </span> 
+        <ul class="list-group">
+          <li *ngFor="let cap of characterData.episode" class="list-group-item">
+            <a [routerLink]="['/episode', extractId(cap)]" href="#">{{ extractId(cap) }}</a>
+          </li>
+        </ul>
+    </li>
+  </ul>
+</div>

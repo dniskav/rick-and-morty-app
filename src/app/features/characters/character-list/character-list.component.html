@@ -1,0 +1,80 @@
+<div
+  inifiniteScroll
+  [threshold]="10"
+  (closeToBottom)="closeToBottom()"
+  class="list-container"
+>
+  <table class="table table-striped">
+    <thead class="sticky">
+      <tr>
+        <th>Image</th>
+
+        <th>
+          Name
+          <span
+            class="table-sort text-success"
+            appTableSort="name"
+            (sort)="customSort($event)"
+          ></span>
+        </th>
+
+        <th>
+          Status
+          <span
+            class="table-sort text-success"
+            appTableSort="status"
+            (sort)="customSort($event)"
+          ></span>
+        </th>
+
+        <th>
+          Species
+          <span
+            class="table-sort text-success"
+            appTableSort="species"
+            (sort)="customSort($event)"
+          ></span>
+        </th>
+
+        <th>
+          Episode
+          <span
+            class="table-sort text-success"
+            appTableSort="episode"
+            (sort)="customSort($event)"
+          ></span>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let rowData of characters" (click)="goto(rowData.id)">
+        <td>
+          <img
+            class="avatar"
+            [appImageLoader]="rowData.image"
+            [defaultImage]="'assets/images/default.jpeg'"
+            src="assets/images/default.jpeg"
+            [alt]="rowData.name"
+          />
+        </td>
+
+        <td>
+          {{ rowData.name }}
+        </td>
+
+        <td>
+          {{ rowData.status }}
+        </td>
+
+        <td>
+          {{ rowData.species }}
+        </td>
+
+        <td>
+          {{ rowData.episode.length }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

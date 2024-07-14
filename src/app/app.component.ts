@@ -6,6 +6,7 @@ import { LoadingService } from './core/services/loading/loading.service';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { Observable } from 'rxjs';
 import { AuthService } from '@auth0/auth0-angular';
+import { UtilsService } from './core/services/utils/utils.service';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit {
   loading$: Observable<boolean>;
 
   constructor(
+    private utils: UtilsService,
     private router: Router,
     private loadingService: LoadingService,
     private cdr: ChangeDetectorRef,

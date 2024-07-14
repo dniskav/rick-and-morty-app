@@ -46,8 +46,18 @@
 }
 
 
+.control-btn {
+  background: none;
+  border: none;
+}
+
+.spread {
+  display: flex;
+  justify-content: space-between;
+}
+
 @media print {
-  button {
+  button, .btn-success {
     display: none;
   }
 

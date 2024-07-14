@@ -5,6 +5,60 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UtilsService {
+  private audio = new Audio();
+  private isPlaying = false;
+  private isRepeat = false;
+
+  constructor() {
+    this.audio.src = 'assets/music/rym.mp3';
+    this.audio.load();
+  }
+
+  playAudio() {
+    if (!this.isPlaying) {
+      this.audio.play()
+        .then(() => {
+          this.isPlaying = true;
+          localStorage.setItem('audioPlayed', 'true');
+        })
+        .catch(error => console.error('Error playing audio:', error));
+    }
+  }
+
+  stopAudio() {
+    if (this.isPlaying) {
+      this.audio.pause();
+      this.audio.currentTime = 0;
+      this.isPlaying = false;
+    }
+  }
+
+  togglePlay() {
+    if (this.isPlaying) {
+      this.audio.pause();
+      this.isPlaying = false;
+    } else {
+      this.audio.play()
+        .then(() => {
+          this.isPlaying = true;
+        })
+        .catch(error => console.error('Error playing audio:', error));
+    }
+  }
+
+  toggleRepeat() {
+    this.isRepeat = !this.isRepeat;
+    this.audio.loop = this.isRepeat;
+  }
+
+  get isAudioPlaying() {
+    return this.isPlaying;
+  }
+
+  get isAudioRepeat() {
+    return this.isRepeat;
+  }
+
   getSeasonNumber(id: string) {
     return { season: id.slice(0, 3), number: id.slice(-3)};
   }

@@ -5,13 +5,14 @@ import { CharacterDetailComponent } from './features/characters/character-detail
 import { EpisodesComponent } from './features/episodes/episodes.component';
 import { EpisodeDetailComponent } from './features/episodes/episode-detail/episode-detail.component';
 import { WebsocketComponent } from './features/websocket/websocket.component';
+import { AuthGuard } from '@auth0/auth0-angular';
 
 export const routes: Routes = [
   { path: 'characters', component: CharactersComponent },
   { path: 'character/:id', component: CharacterDetailComponent },
   { path: 'episodes', component: EpisodesComponent },
   { path: 'episode/:id', component: EpisodeDetailComponent },
-  { path: 'websocket', component: WebsocketComponent },
+  { path: 'websocket', component: WebsocketComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

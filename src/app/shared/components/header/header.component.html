@@ -1,9 +1,18 @@
 <div class="header card">
   <div class="card-body">
-    <button class="btn btn-primary btn-sm"  (click)="goto('characters')" >Characters</button>
+    <button class="btn btn-primary btn-sm" (click)="goto('characters')">
+      Characters
+    </button>
 
-    <button class="btn btn-primary btn-sm"  (click)="goto('episodes')">Episodes</button>
+    <button class="btn btn-primary btn-sm" (click)="goto('episodes')">
+      Episodes
+    </button>
 
-    <button class="btn btn-secondary btn-sm"  (click)="goto('websocket')">Websocket</button>
-  </div>
+    <button class="btn btn-secondary btn-sm" (click)="goto('websocket')">
+      Websocket
+    </button>
+
+    <button class="btn btn-success btn-sm" *ngIf="!(auth.isAuthenticated$ | async)" (click)="auth.loginWithRedirect()">Log In</button>
+    <button class="btn btn-warning btn-sm" *ngIf="auth.isAuthenticated$ | async" (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })">Log Out</button>
+      </div>
 </div>

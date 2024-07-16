@@ -1,6 +1,6 @@
 # RickAndMortyApp
 
-https://dniskav.github.io/rick-and-morty-app/characters
+https://dniskav.github.io/rick-and-morty-app
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.7.
 

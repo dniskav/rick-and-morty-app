@@ -2,11 +2,12 @@
   <div class="card-body">
     <input
       class="form-control form-control-sm"
-      [(ngModel)]="filter.name"
+      [value]="filter().name"
+      (input)="updateFilter('name', $event)"
       placeholder="Filter by name"
     />
 
-    <select class="form-select form-select-sm" [(ngModel)]="filter.status">
+    <select class="form-select form-select-sm" (input)="updateFilter('status', $event)">
       <option *ngFor="let status of characterStatus" [value]="status.code">
         {{ status.name }}
       </option>
@@ -14,7 +15,7 @@
 
     <input
       class="form-control form-control-sm"
-      [(ngModel)]="filter.species"
+      (input)="updateFilter('status', $event)"
       placeholder="Filter by species"
     />
 
@@ -25,6 +26,7 @@
     <button class="btn btn-primary btn-sm" (click)="clearFilters()">
       Clear Filters
     </button>
+    <span class="total-registers">{{ totalResults().current }} of {{ totalResults().total }}</span>
   </div>
 </div>
 
@@ -32,10 +34,10 @@
   <div class="card-body">
     <app-character-list
       (loadMore)="loadMore()"
-      [currentPage]="currentPage"
-      [characters]="characters"
+      [currentPage]="currentPage()"
+      [characters]="characters()"
       (isSorting)="sortBy($event)"
-      [endOfList]="endOfList"
+      [endOfList]="endOfList()"
     ></app-character-list>
   </div>
 </div>

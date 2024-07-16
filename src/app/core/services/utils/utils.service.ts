@@ -71,4 +71,11 @@ export class UtilsService {
     const match = url.match(/\/(\d+)$/);
     return match ? match[1] : '';
   }
+
+  noDupesJoin(itemsList1: any[], itemsList2: any[]): any[] {
+    const joined = [...itemsList1,...itemsList2];
+    let preList = new Set([...joined.map(e => JSON.stringify(e))]);
+    let list = Array.from(preList).map(e => JSON.parse(e));
+    return list;
+  }
 }

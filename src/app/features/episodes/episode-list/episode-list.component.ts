@@ -2,13 +2,13 @@ import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angu
 import { Router } from '@angular/router';
 import { episodeModel } from '../../../core/models/episodes/episodes.model';
 import { CommonModule } from '@angular/common';
-import { InifiniteScrollDirective } from '../../../shared/directives/infinite-scroll/inifinite-scroll.directive';
 import { TableSortDirective } from '../../../shared/directives/tableSort/table-sort.directive';
+import { InfiniteScrollDirective } from '../../../shared/directives/infinite-scroll/inifinite-scroll.directive';
 
 @Component({
   selector: 'app-episode-list',
   standalone: true,
-  imports: [CommonModule, InifiniteScrollDirective, TableSortDirective],
+  imports: [CommonModule, InfiniteScrollDirective, TableSortDirective],
   templateUrl: './episode-list.component.html',
   styleUrl: './episode-list.component.css'
 })

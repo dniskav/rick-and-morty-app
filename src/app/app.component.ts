@@ -1,4 +1,5 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { isLoading } from './shared/state/loading.state';
+import { Component, OnInit, NgZone, inject } from '@angular/core';
 import { ChangeDetectorRef } from '@angular/core';
 import { RouterOutlet, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -15,28 +16,11 @@ import { UtilsService } from './core/services/utils/utils.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'rick-and-morty-app';
-  loading$: Observable<boolean>;
-
-  constructor(
-    private utils: UtilsService,
-    private router: Router,
-    private loadingService: LoadingService,
-    private cdr: ChangeDetectorRef,
-    private ngZone: NgZone,
-    public auth: AuthService,
-  ) {
-    this.loading$ = this.loadingService.loading$;
-  }
-
-  ngOnInit(): void {
-    this.loading$.subscribe(() => {
-      this.ngZone.run(() => {
-        this.cdr.detectChanges();
-      });
-    });
-  }
+  public router = inject(Router);
+  public auth = inject(AuthService);
+  public isLoading = isLoading;
 
   goto(dir: string) {
     this.router.navigate([dir]);
